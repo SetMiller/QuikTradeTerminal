@@ -1,45 +1,56 @@
-dofile(getScriptPath().."\\Components\\DepoLimits.lua")
+dofile(getScriptPath().."\\Logic\\MainLoop.lua")
 
-account = {
-  ['firmid'] = "SPBFUT",                    -- идентификатор фирмы
-  ['trdaccid'] = "SPBFUTJRk1N",                  -- торговый счет
-  ['limitType'] = 0,                  -- тип лимита (0 -  денежные средства)
-  ['currcode'] = "SUR"                -- валюта, в которой транслируется органичение
-}
-
-function OnConnected()
-  message(tostring(run))
-  run = true
-
-end
-function OnDisconnected()
-  message(tostring(run))
-  run = false
-
-end
-
-mainrun = true
-
+-- 
+-- Функция обратного вызова для активации объектов для запуска привода
+--
 function OnInit()
-  depoLimits = DepoLimits:new()
+  mainLoop = MainLoop:new()
 end
 
 function main()
-    depoLimits:getData()
-    -- messsage(tostring(run))
-
-  while mainrun do
-    -- serverTime:getTime(mess)
-    if run then
-      message('2')
+  -- проверяем наличие активного соединения с сервером
+  local isConnected = isConnected() == 1 and true or false
+  -- при наличии, запускаем основной цикл программы
+  mainLoop:setIsConnected(isConnected)
+  -- при отсутствии, выдаем сообщение, что соединение отсутствует и его необходимо проверить
+  if mainLoop:getIsConnected() == false then
+    message('Please, check the server connection! Quik is offline')
+  else
+    -- основной цикл привода
+    while mainLoop:getMainLoop() do
+      -- проверяем наличие активного соединения
+      if mainLoop:getIsConnected() then
+        sleep(400)
+      else
+      -- в случае отсутствия активного соединения программа продолжает работать
+      -- TODO: 
+      -- добавить отправку сообщения в телеграмм о разрыве соединения с сервером
+        sleep(1000)
+      end
     end
-    
-    sleep(200)
   end
+  
 end
 
-function OnStop()                                                         -- действия при нажатии кнопки "Остановить"
-  mainrun = false
+-- 
+-- Функция обратного вызова для отслеживания восстановления соединения с сервером
+--
+function OnConnected()
+  mainLoop:setIsConnected(true)
+end
+
+-- 
+-- Функция обратного вызова для отслеживания разрыва соединения с сервером
+--
+function OnDisconnected()
+  mainLoop:setIsConnected(false)
+end
+
+-- 
+-- Функция обратного вызова для завершения работы привода
+--
+function OnStop()                                                         
+  mainLoop:setMainLoop(false)
 end
 
 function OnParam(class, sec)
