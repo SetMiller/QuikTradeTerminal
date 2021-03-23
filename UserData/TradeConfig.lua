@@ -1,11 +1,14 @@
 TradeConfig = {}
 
+-- 
+-- Класс реализует хранилище с данными для расчета точек входа и закрытия позиций
+--
 function TradeConfig:new()
   local Private = {}
 
     Private.tradeConfig = {
       -- SBER
-      ['dayPossOffset']         = -3,               -- спред на вход в позицию (значения в единицах!!!)
+      ['dayPossOffset']         = 1,                -- спред на вход в позицию (значения в единицах!!!)
       ['futuresPossOffset']     = 40,               -- дельта на проскальзывание по фьючерсу для входа в позицию
       ['futuresStopOffset']     = 200,              -- дельта на проскальзывание по фьючерсу для входа в позицию
       ['tradeRisk']             = 3.00,             -- риск на сделку (3%)
@@ -17,6 +20,9 @@ function TradeConfig:new()
 
   local Public = {}
 
+  -- 
+  -- Метод getTradeConfig() реализует доступ к данным для расчета позиций и стопов
+  -- 
   function getTradeConfig()
     return Private.tradeConfig
   end

@@ -1,5 +1,8 @@
 QuikChartsID = {}
 
+-- 
+-- Класс реализует хранилище с данными по идентификационным ключам получения данных с графиков
+--
 function QuikChartsID:new()
   local Private = {}
 
@@ -21,8 +24,25 @@ function QuikChartsID:new()
 
   local Public = {}
 
+  -- 
+  -- Метод getStockID() реализует доступ к идентификаторам акции
+  -- 
+  function getStockID()
+    return Private.chartsID.stock
+  end
+
+  -- 
+  -- Метод getFuturesID() реализует доступ к идентификаторам фьючерса
+  -- 
+  function getFuturesID()
+    return Private.chartsID.futures
+  end
+
+  -- 
+  -- Метод getQuikChartsID() реализует доступ к идентификаторам графиков для акции и фьючерса
+  -- 
   function getQuikChartsID()
-    return Private.chartsID
+    return Private.chartsID.charts
   end
 
   setmetatable(Public, self)

@@ -3,22 +3,22 @@ QuikStopKeys = {}
 -- 
 -- Класс реализует хранилище с данными по идентификационным ключам для стоп-лимит заявок
 --
-
 function QuikStopKeys:new()
   local Private = {}
 
     Private.keys = {
-      -------------------- Ключи для удаления активных стоп ордеров --------------------
+
       active = {
         ['longActiveStops']   = {25, 89},
         ['shortActiveStops']  = {29, 93},
         ['allActiveStops']    = {25, 89, 29, 93}
       },
-      -------------------- Ключи для активированных стоп ордеров --------------------
+
       activated = {
         ['longActivatedStops']  = {24, 88},
         ['shortActivatedStops'] = {28, 92},
       },
+
     }
 
   local Public = {}
