@@ -42,7 +42,7 @@ function QuikStopKeys:new()
         if not isFound then error(("bad argument, there is no \"%s\" possType: QuikStopKeys -> get())"):format(possType), 2) end
       end
     end
-    if not isFound then error(("bad argument, there is no \"%s\" idType: QuikChartsID -> get())"):format(keyType), 2) end
+    if not isFound then error(("bad argument, there is no \"%s\" keyType: QuikStopKeys -> get())"):format(keyType), 2) end
   end
 
   setmetatable(Public, self)
