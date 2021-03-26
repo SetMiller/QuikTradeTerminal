@@ -29,10 +29,10 @@ function TradeConfig:new()
     
     local isFound = false
 
-    for ik, iv in pairs(Private.tradeConfig) do
-      if ik == confOption then
+    for k, v in pairs(Private.tradeConfig) do
+      if k == confOption then
         isFound = true
-        return iv
+        return v
       end
     end
     if not isFound then error(("bad argument, there is no \"%s\" confOption: TradeConfig -> get())"):format(confOption), 2) end
