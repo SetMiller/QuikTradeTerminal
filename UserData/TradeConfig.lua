@@ -8,7 +8,7 @@ function TradeConfig:new()
 
     Private.tradeConfig = {
       -- SBER
-      ['dayPossOffset']         = 1,                -- спред на вход в позицию (значения в единицах!!!)
+      ['stockOffset']           = 1,                -- спред на вход в позицию (значения в единицах!!!)
       ['futuresPossOffset']     = 40,               -- дельта на проскальзывание по фьючерсу для входа в позицию
       ['futuresStopOffset']     = 200,              -- дельта на проскальзывание по фьючерсу для входа в позицию
       ['tradeRisk']             = 3.00,             -- риск на сделку (3%)
@@ -21,10 +21,21 @@ function TradeConfig:new()
   local Public = {}
 
   -- 
-  -- Метод getTradeConfig() реализует доступ к данным для расчета позиций и стопов
+  -- Метод get() реализует доступ к данным для расчета позиций и стопов
   -- 
-  function getTradeConfig()
-    return Private.tradeConfig
+  -- @param confOption string
+  function Public:get(confOption)
+    if type(confOption) ~= 'string' then error(("bad argument confOption: TradeConfig -> get() (string expected, got %s)"):format(type(confOption)), 2) end
+    
+    local isFound = false
+
+    for ik, iv in pairs(Private.tradeConfig) do
+      if ik == confOption then
+        isFound = true
+        return iv
+      end
+    end
+    if not isFound then error(("bad argument, there is no \"%s\" confOption: TradeConfig -> get())"):format(confOption), 2) end
   end
 
   setmetatable(Public, self)
