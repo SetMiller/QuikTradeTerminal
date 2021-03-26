@@ -32,11 +32,13 @@ function QuikChartsID:new()
   -- @param chartType string
   function Public:get(idType, chartType)
     if type(idType) ~= 'string' then error(("bad argument idType: QuikChartsID -> get() (string expected, got %s)"):format(type(idType)), 2) end
+    if type(chartType) ~= 'string' then error(("bad argument chartType: QuikChartsID -> get() (string expected, got %s)"):format(type(chartType)), 2) end
+    
     local isFound = false
+    
     for ik, iv in pairs(Private.chartsID) do
       if ik == idType then
         if ik == 'charts' then
-          if type(chartType) ~= 'string' then error(("bad argument chartType: QuikChartsID -> get() (string expected, got %s)"):format(type(chartType)), 2) end
           for jk, jv in pairs(iv) do
             if jk == chartType then 
               isFound = true

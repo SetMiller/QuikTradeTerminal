@@ -7,34 +7,42 @@ function QuikStopKeys:new()
   local Private = {}
 
     Private.keys = {
-
       active = {
-        ['longActiveStops']   = {25, 89},
-        ['shortActiveStops']  = {29, 93},
-        ['allActiveStops']    = {25, 89, 29, 93}
+        ['long']   = {25, 89},
+        ['short']  = {29, 93},
+        ['all']    = {25, 89, 29, 93}
       },
-
       activated = {
-        ['longActivatedStops']  = {24, 88},
-        ['shortActivatedStops'] = {28, 92},
-      },
-
+        ['long']  = {24, 88},
+        ['short'] = {28, 92},
+      }
     }
 
   local Public = {}
 
   -- 
-  -- Метод getActiveStopKeys() реализует доступ к идентификаторам активных стоп-лимит завок
+  -- Метод get() реализует доступ к ключам стоп-лимит заявок в терминале QUIK
   -- 
-  function getActiveStopKeys()
-    return Private.keys.active
-  end
+  -- @param keyType string
+  -- @param possType string
+  function Public:get(keyType, possType)
+    if type(keyType) ~= 'string' then error(("bad argument keyType: QuikStopKeys -> get() (string expected, got %s)"):format(type(keyType)), 2) end
+    if type(possType) ~= 'string' then error(("bad argument possType: QuikStopKeys -> get() (string expected, got %s)"):format(type(possType)), 2) end
+    
+    local isFound = false
 
-  -- 
-  -- Метод getActivatedStopKeys() реализует доступ к идентификаторам активированных стоп-лимит завок
-  -- 
-  function getActivatedStopKeys()
-    return Private.keys.activated
+    for ik, iv in pairs(Private.keys) do
+      if ik == keyType then
+        for jk, jv in pairs(iv) do
+          if jk == possType then
+            isFound = true
+            return jv
+          end
+        end
+        if not isFound then error(("bad argument, there is no \"%s\" possType: QuikStopKeys -> get())"):format(possType), 2) end
+      end
+    end
+    if not isFound then error(("bad argument, there is no \"%s\" idType: QuikChartsID -> get())"):format(keyType), 2) end
   end
 
   setmetatable(Public, self)
