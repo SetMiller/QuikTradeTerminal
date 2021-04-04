@@ -16,7 +16,7 @@ function MainLoop:new()
     function Private:connectionCheck()
       Private.isConnected = isConnected() == 1 and true or false
       if Private.isConnected then
-        message('The TradeTerminal is connected. All goes well. Good luck!')
+        -- message('The TradeTerminal is connected. All goes well. Good luck!')
       else
         message('The connection to quik lost! Chect the quik connection!')
       end
@@ -39,7 +39,14 @@ function MainLoop:new()
       while Private.isRun do
         -- в процессе работы проверяем наличие активного соединения, чтобы программы не завершалась из-за дисконнекта
         if Private.isConnected then
+
+          -- local aa = TradeConfig:get('dayWeights')
+          -- for k, v in pairs(aa) do
+          --   message(k .. " = " .. v)
+          -- end
+          -- message(tostring(aa))
           sleep(400)
+          -- Public:runOff()
         else
         -- в случае отсутствия активного соединения программа продолжает работать
         -- TODO: 

@@ -1,17 +1,18 @@
 dofile(getScriptPath().."\\Logic\\Main\\MainLoop.lua")
-dofile(getScriptPath().."\\UserData\\QuikChartsID.lua")
-dofile(getScriptPath().."\\UserData\\QuikStopKeys.lua")
-dofile(getScriptPath().."\\UserData\\TradeConfig.lua")
+dofile(getScriptPath().."\\Init\\UserData.lua")
+
+-- dofile(getScriptPath().."\\Components\\QuikData\\ChartData.lua")
 
 -- 
 -- Инициализация приложения
 --
 function OnInit()
+  UserData:new()
   MainLoop    = MainLoop:new()
-  ChartsID    = QuikChartsID:new()
-  StopKeys    = QuikStopKeys:new()
-  TradeConfig = TradeConfig:new()
-  
+  -- ChartsID    = QuikChartsID:new()
+  -- StopKeys    = QuikStopKeys:new()
+  -- TradeConfig = TradeConfig:new()
+  -- StockDayChart = ChartData:new(ChartsID:get('charts', 'stockD'))
 end
 
 -- 

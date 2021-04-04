@@ -16,7 +16,7 @@ function QuikChartsID:new()
         ['CLASSCODE']   = "SPBFUT",       -- класс фьючерса  
       },
       charts = {
-        ['stockD']      = "SBER_D_STOCK_PRICE",       -- id графика акции
+        ['stockD']      = "SBER_D_STOCK_PRIC",       -- id графика акции
         ['stockH']      = "SBER_H_STOCK_PRICE",       -- id графика акции
         ['futuresD']    = "SBER_D_FUTURES_PRICE",     -- id графика фьючерса
         ['futuresH']    = "SBER_H_FUTURES_PRICE",     -- id графика фьючерса
