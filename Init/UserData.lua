@@ -24,18 +24,18 @@ function UserData:new()
   -- Метод get() реализует доступ к данным для расчета позиций и стопов
   -- 
   -- @param typeOfUserData string
-  function Public:get(typeOfUserData)
-    if type(typeOfUserData) ~= 'string' then error(("bad argument typeOfUserData: TradeConfig -> get() (string expected, got %s)"):format(type(confOption)), 2) end
+  function Public:get(typeOfUserData, featureOfData, chartId)
+    if type(typeOfUserData) ~= 'string' then error(("bad argument typeOfUserData: UserData -> get() (string expected, got %s)"):format(type(typeOfUserData)), 2) end
     
     local isFound = false
 
-    for k, v in pairs(Private.tradeConfig) do
-      if k == confOption then
+    for k, v in pairs(Private.userData) do
+      if k == typeOfUserData then
         isFound = true
-        return v
+        return v:get(featureOfData, chartId)
       end
     end
-    if not isFound then error(("bad argument, there is no \"%s\" confOption: TradeConfig -> get())"):format(confOption), 2) end
+    if not isFound then error(("bad argument, there is no \"%s\" typeOfUserData: UserData -> get())"):format(typeOfUserData), 2) end
   end
 
   setmetatable(Public, self)
