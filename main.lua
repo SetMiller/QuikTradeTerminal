@@ -11,7 +11,7 @@ function OnInit()
   MainLoop    = MainLoop:new()
   UserData    = UserData:new()
 
-  printData()
+  -- printData(UserData, {'UserAccount'})
 end
 
 -- 
