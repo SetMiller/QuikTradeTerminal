@@ -5,18 +5,13 @@ ChartData = {}
 
 -- 
 -- Класс реализует хранилище с данными с графиков
+-- 
+-- получаем объект вида ['stockD'] = {'cData', 'tData', 'nData'}
 --
 function ChartData:new(charts)
   local Private = {}
 
   Private = GetCharts:new(charts):get()
-
-  for k, v in pairs(Private) do
-    message(k .. " :" .. type(v))
-    for kk, vv in pairs(v) do
-      message(tostring(kk))
-    end
-  end
 
 
   --------------------------------------------------------------------

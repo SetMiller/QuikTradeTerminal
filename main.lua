@@ -9,14 +9,12 @@ dofile(getScriptPath().."\\Init\\StaticQuikData.lua")
 
 -- dofile(getScriptPath().."\\Components\\QuikData\\ChartData.lua")
 
--- 
+--
 -- Инициализация приложения
 --
 function OnInit()
   StaticQuikData  = StaticQuikData:new()
   MainLoop        = MainLoop:new()
-
-  -- printData(UserData, {'UserAccount'})
 end
 
 -- 

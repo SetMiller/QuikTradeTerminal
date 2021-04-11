@@ -6,7 +6,7 @@ dofile(getScriptPath().."\\UserConfig\\UserAccount.lua")
 UserData = {}
 
 -- 
--- Класс реализует хранилище с данными аккаунта трейдера
+-- Класс реализует коллекцию с инициализированными данными аккаунта трейдера
 --
 function UserData:new()
   local Private = {}
