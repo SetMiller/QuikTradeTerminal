@@ -6,16 +6,14 @@ QuikStopKeys = {}
 function QuikStopKeys:new()
   local Private = {}
 
-    Private.keys = {
-      active = {
-        ['long']   = {25, 89},
-        ['short']  = {29, 93},
-        ['all']    = {25, 89, 29, 93}
-      },
-      activated = {
-        ['long']  = {24, 88},
-        ['short'] = {28, 92},
-      }
+    Private.activeKeys = {
+      ['long']   = {25, 89},
+      ['short']  = {29, 93},
+      ['all']    = {25, 89, 29, 93}
+    }
+    Private.activatedKeys = {
+      ['long']  = {24, 88},
+      ['short'] = {28, 92},
     }
 
   local Public = {}
@@ -31,7 +29,7 @@ function QuikStopKeys:new()
     
     local isFound = false
 
-    for ik, iv in pairs(Private.keys) do
+    for ik, iv in pairs(Private) do
       if ik == keyType then
         for jk, jv in pairs(iv) do
           if jk == possType then

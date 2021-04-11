@@ -6,21 +6,19 @@ QuikChartsID = {}
 function QuikChartsID:new()
   local Private = {}
 
-    Private.chartsID = {
-      stock = {
-        ['SECCODE']     = "SBER",         -- код акции
-        ['CLASSCODE']   = "TQBR",         -- класс акции 
-      },
-      futures = {
-        ['SECCODE']     = "SRM1",         -- код фьючерса FIXME: при смене фьючерса, поменять !!!!!!!!!
-        ['CLASSCODE']   = "SPBFUT",       -- класс фьючерса  
-      },
-      charts = {
-        ['stockD']      = "SBER_D_STOCK_PRIC",        -- id графика акции
-        ['stockH']      = "SBER_H_STOCK_PRICE",       -- id графика акции
-        ['futuresD']    = "SBER_D_FUTURES_PRICE",     -- id графика фьючерса
-        ['futuresH']    = "SBER_H_FUTURES_PRICE",     -- id графика фьючерса
-      }
+    Private.stock = {
+      ['SECCODE']     = "SBER",         -- код акции
+      ['CLASSCODE']   = "TQBR",         -- класс акции 
+    }
+    Private.futures = {
+      ['SECCODE']     = "SRM1",         -- код фьючерса FIXME: при смене фьючерса, поменять !!!!!!!!!
+      ['CLASSCODE']   = "SPBFUT",       -- класс фьючерса  
+    }
+    Private.charts = {
+      ['stockD']      = "SBER_D_STOCK_PRICE",        -- id графика акции
+      ['stockH']      = "SBER_H_STOCK_PRICE",       -- id графика акции
+      ['futuresD']    = "SBER_D_FUTURES_PRICE",     -- id графика фьючерса
+      ['futuresH']    = "SBER_H_FUTURES_PRICE",     -- id графика фьючерса
     }
 
   local Public = {}
@@ -35,7 +33,7 @@ function QuikChartsID:new()
     
     local isFound = false
     
-    for ik, iv in pairs(Private.chartsID) do
+    for ik, iv in pairs(Private) do
       if ik == idType then
         if ik == 'charts' then
           if type(chartType) ~= 'string' then error(("bad argument chartType: QuikChartsID -> get() (string expected, got %s)"):format(type(chartType)), 2) end

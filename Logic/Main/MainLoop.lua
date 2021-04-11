@@ -10,30 +10,18 @@ function MainLoop:new()
     Private.isConnected = false
     Private.isRun = true
 
-    -- 
-    -- Метод connectionCheck() реализует проверку наличия активного соединения quik с сервером
-    -- 
-    function Private:connectionCheck()
-      Private.isConnected = isConnected() == 1 and true or false
-      if Private.isConnected then
-        -- message('The TradeTerminal is connected. All goes well. Good luck!')
-      else
-        message('The connection to quik lost! Chect the quik connection!')
-      end
-    end
-
   local Public = {}
 
   -- 
-  -- Метод runOn() реализует запуск основного цикла программы
+  -- Метод isOn() реализует запуск основного цикла программы
   -- 
-  function Public:runOn()
+  function Public:isOn()
     -- проверяем наличие активного соединения перед запуском программы
-    Private:connectionCheck()
+    Private.isConnected = isConnected() == 1 and true or false
 
     -- проверяем наличие активного соединения для запуска основного цикла программы
     if Private.isConnected == false then
-      message('Please, check the server connection! Quik is offline')
+      message('Check your Quik connection')    
     else
       -- основной цикл программы
       while Private.isRun do
@@ -58,25 +46,28 @@ function MainLoop:new()
   end
 
   -- 
-  -- Метод onConnect() реализует реакцию коллбэк функции на подключение к серверу:
+  -- Метод onConnected() реализует реакцию коллбэк функции на подключение к серверу:
   -- сервер подключен
   -- 
-  function Public:onConnect()
-    Private:connectionCheck()
+  function Public:onConnected()
+    Private.isConnected = true
+    _G.luaPipe.SendMessage('The Quik is online now', 'telegram_pipe')
+
   end
 
   -- 
-  -- Метод onDisconnect() реализует взаимосвязь с переключателем состояния основного цикла программы:
+  -- Метод onDisconnected() реализует взаимосвязь с переключателем состояния основного цикла программы:
   -- сервер отключен
   -- 
-  function Public:onDisconnect()
-    Private:connectionCheck()
+  function Public:onDisconnected()
+    Private.isConnected = false
+    _G.luaPipe.SendMessage('Quik connection lost. Check your network Connection and try again!', 'telegram_pipe')
   end
 
   -- 
-  -- Метод runOff() реализует завершение работы программы
+  -- Метод isOff() реализует завершение работы программы
   -- 
-  function Public:runOff()
+  function Public:isOff()
     Private.isRun = false
   end
 

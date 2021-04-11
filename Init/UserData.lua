@@ -11,12 +11,10 @@ UserData = {}
 function UserData:new()
   local Private = {}
 
-  Private.userData = {
-    ['ChartsID']    = QuikChartsID:new(),
-    ['StopKeys']    = QuikStopKeys:new(),
-    ['TradeConfig'] = TradeConfig:new(),
-    ['UserAccount'] = UserAccount:new(),
-  }
+  Private.ChartsID    = QuikChartsID:new()
+  Private.StopKeys    = QuikStopKeys:new()
+  Private.TradeConfig = TradeConfig:new()
+  Private.UserAccount = UserAccount:new()
 
   local Public = {}
 
@@ -29,7 +27,7 @@ function UserData:new()
     
     local isFound = false
 
-    for k, v in pairs(Private.userData) do
+    for k, v in pairs(Private) do
       if k == typeOfUserData then
         isFound = true
         return v:get(featureOfData, chartId)
