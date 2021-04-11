@@ -16,6 +16,8 @@ function UserData:new()
   Private.TradeConfig = TradeConfig:new()
   Private.UserAccount = UserAccount:new()
 
+  
+  --------------------------------------------------------------------
   local Public = {}
 
   -- 
