@@ -5,6 +5,8 @@ require('luaPipe')
 
 dofile(getScriptPath().."\\Logic\\Main\\MainLoop.lua")
 dofile(getScriptPath().."\\Init\\StaticQuikData.lua")
+dofile(getScriptPath().."\\Logic\\Error.lua")
+
 
 
 -- dofile(getScriptPath().."\\Components\\QuikData\\ChartData.lua")
@@ -13,8 +15,9 @@ dofile(getScriptPath().."\\Init\\StaticQuikData.lua")
 -- Инициализация приложения
 --
 function OnInit()
-  StaticQuikData  = StaticQuikData:new()
+  -- StaticQuikData  = StaticQuikData:new()
   MainLoop        = MainLoop:new()
+  Error           = Error:new()
 end
 
 -- 

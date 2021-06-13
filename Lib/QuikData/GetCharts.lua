@@ -3,6 +3,7 @@ GetCharts = {}
 -- 
 -- Класс реализует получение данных с графиков Quik
 --
+-- @param chartsId string
 function GetCharts:new(chartsId)
   local chartsId = chartsId
 

@@ -6,7 +6,7 @@ GetParam = {}
 function GetParam:new(params)
   local Private = {}
 
-  Private.chartsId = chartsId
+  -- Private.chartsId = chartsId
 
 
   --------------------------------------------------------------------

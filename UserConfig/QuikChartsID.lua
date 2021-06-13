@@ -14,12 +14,12 @@ function QuikChartsID:new()
       ['SECCODE']     = "SRM1",         -- код фьючерса FIXME: при смене фьючерса, поменять !!!!!!!!!
       ['CLASSCODE']   = "SPBFUT",       -- класс фьючерса  
     }
-    Private.charts = {
-      ['stockD']      = "SBER_D_STOCK_PRICE",       -- id графика акции
-      ['stockH']      = "SBER_H_STOCK_PRICE",       -- id графика акции
-      ['futuresD']    = "SBER_D_FUTURES_PRICE",     -- id графика фьючерса
-      ['futuresH']    = "SBER_H_FUTURES_PRICE",     -- id графика фьючерса
-    }
+    -- Private.charts = {
+    --   ['stockD']      = "SBER_D_STOCK_PRICE",       -- id графика акции
+    --   ['stockH']      = "SBER_H_STOCK_PRICE",       -- id графика акции
+    --   ['futuresD']    = "SBER_D_FUTURES_PRICE",     -- id графика фьючерса
+    --   ['futuresH']    = "SBER_H_FUTURES_PRICE",     -- id графика фьючерса
+    -- }
 
 
   --------------------------------------------------------------------

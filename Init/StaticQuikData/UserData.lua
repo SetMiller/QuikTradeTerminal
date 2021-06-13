@@ -4,7 +4,7 @@ dofile(getScriptPath().."\\UserConfig\\TradeConfig.lua")
 dofile(getScriptPath().."\\UserConfig\\UserAccount.lua")
 
 UserData = {}
-
+-- TODO: подумать о необходимости реаоищации получения юзер даты здесь, если ее можно получить напрямую
 -- 
 -- Класс реализует коллекцию с инициализированными данными аккаунта трейдера
 --
