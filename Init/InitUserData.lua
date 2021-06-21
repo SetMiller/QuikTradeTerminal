@@ -20,7 +20,7 @@ function InitUserData:new(...)
   end
 
   for k,v in ipairs(Private) do
-    Private[k]:toString()
+    Private[k]:toString() 
   end
 
   
