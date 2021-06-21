@@ -17,8 +17,9 @@ function TradeConfig:new()
       ['stopRate']              = 0.35,             -- 35% от диапазона средневзвешенного дня для стопа
       ['minimumStop']           = 0.60,             -- минимальный размер стопа
       ['dayWeights']            = {2, 3, 4, 2, 1},  -- весовые показатели для дней от мелкого к самому крупному по диапазону
+      ['isFuturesStop']         = false             -- стоп по фьючерсу или акции, если она есть
     }
-  
+
   --------------------------------------------------------------------
   local Public = {}
 
@@ -38,6 +39,10 @@ function TradeConfig:new()
       end
     end
     if not isFound then error(("bad argument, there is no \"%s\" confOption: TradeConfig -> get())"):format(confOption), 2) end
+  end
+
+  function Public:toString()
+    message('TradeConfig')
   end
 
   setmetatable(Public, self)

@@ -6,10 +6,13 @@ UserAccount = {}
 function UserAccount:new()
   local Private = {}
 
-    Private.firmid    = "SPBFUT"              -- идентификатор фирмы
-    Private.trdaccid  = "SPBFUTJRk1N"         -- торговый счет
-    Private.limitType = 0                     -- тип лимита (0 -  денежные средства)
-    Private.currcode  = "SUR"                 -- валюта, в которой транслируется органичение
+    Private.account = {
+      ['firmid']    = "SPBFUT",              -- идентификатор фирмы
+      ['trdaccid']  = "SPBFUTJRk1N",         -- торговый счет
+      ['limitType'] = 0,                     -- тип лимита (0 -  денежные средства)
+      ['currcode']  = "SUR",                 -- валюта, в которой транслируется органичение
+    }
+    
 
     
   --------------------------------------------------------------------
@@ -19,7 +22,11 @@ function UserAccount:new()
   -- Метод get() реализует доступ к данным аккаунта пользователя
   -- 
   function Public:get()
-    return Private
+    return Private.account
+  end
+
+  function Public:toString()
+    message('UserAccount')
   end
 
   setmetatable(Public, self)

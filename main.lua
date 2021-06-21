@@ -4,9 +4,11 @@ package.path   = _G.getScriptPath().."\\TelegramBot\\?.lua"
 require('luaPipe')
 
 dofile(getScriptPath().."\\Logic\\Main\\MainLoop.lua")
-dofile(getScriptPath().."\\Init\\StaticQuikData.lua")
-dofile(getScriptPath().."\\Logic\\Error.lua")
-
+dofile(getScriptPath().."\\Init\\InitUserData.lua")
+dofile(getScriptPath().."\\UserConfig\\QuikChartsID.lua")
+dofile(getScriptPath().."\\UserConfig\\QuikStopKeys.lua")
+dofile(getScriptPath().."\\UserConfig\\TradeConfig.lua")
+dofile(getScriptPath().."\\UserConfig\\UserAccount.lua")
 
 
 -- dofile(getScriptPath().."\\Components\\QuikData\\ChartData.lua")
@@ -15,9 +17,17 @@ dofile(getScriptPath().."\\Logic\\Error.lua")
 -- Инициализация приложения
 --
 function OnInit()
-  -- StaticQuikData  = StaticQuikData:new()
   MainLoop        = MainLoop:new()
-  Error           = Error:new()
+  InitUserData    = InitUserData:new(QuikChartsID, TradeConfig, QuikStopKeys, UserAccount)
+  -- QuikChartsID    = QuikChartsID:new()
+  -- -- StockDayChart   = CandleData:new(QuikChartsID:get('stock'), INTERVAL_D1):get()
+  -- FuturesDayChart = CandleData:new(QuikChartsID:get('futures'), INTERVAL_D1):get()
+  -- -- for k,v in pairs(StockDayChart) do
+  -- --   message(k .. " = " .. tostring(v))
+  -- -- end
+  -- for k,v in pairs(FuturesDayChart) do
+  --   message(k .. " = " .. tostring(v))
+  -- end
 end
 
 -- 

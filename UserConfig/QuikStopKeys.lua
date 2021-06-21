@@ -45,6 +45,10 @@ function QuikStopKeys:new()
     if not isFound then error(("bad argument, there is no \"%s\" keyType: QuikStopKeys -> get())"):format(keyType), 2) end
   end
 
+  function Public:toString()
+    message('QuikStopKeys')
+  end
+
   setmetatable(Public, self)
   self.__index = self
   return Public
