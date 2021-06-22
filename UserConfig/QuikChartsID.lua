@@ -44,7 +44,7 @@ function QuikChartsID:new()
     end
 
   function Public:toString()
-    message('QuikChartsID')
+    return 'QuikChartsID'
   end
 
   setmetatable(Public, self)

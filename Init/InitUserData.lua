@@ -3,6 +3,7 @@
 -- dofile(getScriptPath().."\\UserConfig\\QuikStopKeys.lua")
 -- dofile(getScriptPath().."\\UserConfig\\TradeConfig.lua")
 -- dofile(getScriptPath().."\\UserConfig\\UserAccount.lua")
+dofile(getScriptPath().."\\Lib\\getObjToRead.lua")
 
 InitUserData = {}
 
@@ -13,15 +14,22 @@ InitUserData = {}
 function InitUserData:new(...)
   local Private = {}
 
-
+  local bufferTable = nil
+  local bufferType = nil
   for k,v in ipairs{...} do
     if type(select(k, ...)) ~= 'table' then error(("bad argument ARGS: InitUserData (table expected, got %s)"):format(type(select(k, ...))), 2) end
-    Private[k] = select(k, ...):new()
+    bufferTable = select(k, ...):new()
+    bufferType = bufferTable:toString()
+    Private[bufferType] = bufferTable
   end
 
-  for k,v in ipairs(Private) do
-    Private[k]:toString() 
-  end
+  -- for k,v in ipairs(Private) do
+  --   if Private[k]:toString() == 'UserAccount' then
+  --     message('2')
+  --   end
+  -- end
+  getObjToRead(Private)
+  -- getObjToRead(Private['TradeConfig']:get('dayWeights'))
 
   
 

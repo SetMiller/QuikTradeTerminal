@@ -46,7 +46,7 @@ function QuikStopKeys:new()
   end
 
   function Public:toString()
-    message('QuikStopKeys')
+    return 'QuikStopKeys'
   end
 
   setmetatable(Public, self)

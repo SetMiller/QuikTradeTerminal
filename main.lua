@@ -19,15 +19,8 @@ dofile(getScriptPath().."\\UserConfig\\UserAccount.lua")
 function OnInit()
   MainLoop        = MainLoop:new()
   InitUserData    = InitUserData:new(QuikChartsID, TradeConfig, QuikStopKeys, UserAccount)
-  -- QuikChartsID    = QuikChartsID:new()
-  -- -- StockDayChart   = CandleData:new(QuikChartsID:get('stock'), INTERVAL_D1):get()
-  -- FuturesDayChart = CandleData:new(QuikChartsID:get('futures'), INTERVAL_D1):get()
-  -- -- for k,v in pairs(StockDayChart) do
-  -- --   message(k .. " = " .. tostring(v))
-  -- -- end
-  -- for k,v in pairs(FuturesDayChart) do
-  --   message(k .. " = " .. tostring(v))
-  -- end
+  -- InitUserData    = InitUserData:new(TradeConfig)
+ 
 end
 
 -- 

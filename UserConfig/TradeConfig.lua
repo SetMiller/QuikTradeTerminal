@@ -42,7 +42,7 @@ function TradeConfig:new()
   end
 
   function Public:toString()
-    message('TradeConfig')
+    return 'TradeConfig'
   end
 
   setmetatable(Public, self)

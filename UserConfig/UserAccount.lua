@@ -26,7 +26,7 @@ function UserAccount:new()
   end
 
   function Public:toString()
-    message('UserAccount')
+    return 'UserAccount'
   end
 
   setmetatable(Public, self)
